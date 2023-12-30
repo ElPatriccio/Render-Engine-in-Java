@@ -14,9 +14,13 @@ public class Vector implements Iterable<Float>{
         v = new float[dim+1];
     }
 
+    //requires index >= 0 && index < dimension
+    //ensures returns element at index = index
     public float get(int index){
         return v[index];
     }
+    //requires index >= 0 && index < dimension
+    //ensures sets element at index = index
     public void set(int index, float value){
         v[index] = value;
     }
