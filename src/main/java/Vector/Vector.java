@@ -25,19 +25,23 @@ public class Vector implements Iterable<Float>{
         v[index] = value;
     }
 
+    //ensures returns dimension of vector (without homogenous component)
     public int dimension(){
         return v.length - 1;
     }
 
+    //ensures returns size of underlying array (dim of vector with homogenous component)
     public int size(){
         return v.length;
     }
 
+    //ensures returns iterator over all elements except the last one
     @Override
     public Iterator<Float> iterator() {
         return new VecIter(v, false);
     }
 
+    //ensures returns iterator over all elements (with homogenous component)
     public Iterator<Float> homogenizedIterator(){
         return new VecIter(v, true);
     }

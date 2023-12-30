@@ -13,6 +13,14 @@ public class VectorTests {
     void ReturnCorrectElement(){
         assertEquals(2, new Vector(1, 2).get(1));
     }
+
+    @Test
+    void SetCorrectElement(){
+        Vector v = new Vector(1, 2, 3, 4);
+        v.set(2, -3.4f);
+        assertEquals(-3.4f, v.get(2));
+    }
+
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5})
     void Dimension(int dim){
