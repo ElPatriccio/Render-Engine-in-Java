@@ -1,6 +1,5 @@
 package Vector;
 
-import java.awt.geom.QuadCurve2D;
 import java.util.Iterator;
 
 public class Vector implements Iterable<Float>{
