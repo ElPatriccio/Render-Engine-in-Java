@@ -40,7 +40,7 @@ public class VectorTests {
     void Iterator(){
         int i = 0;
         Vector v = new Vector(1, 2, 3);
-        for (float f : v) {
+        for (Float f : v) {
             i++;
         }
         assertEquals(v.dimension(), i);
@@ -102,7 +102,7 @@ public class VectorTests {
     void CrossProduct(){
         Vector v1 = new Vector(2, 3, 9);
         Vector v2 = new Vector(4, 5, 1);
-        assertEquals(new Vector(-42, 34, -2), VecOperations.crossProduct(v1, v2));
+        assertEquals(new Vector(-42, 34, -2), v1.crossProduct(v2));
     }
 
     @Test
