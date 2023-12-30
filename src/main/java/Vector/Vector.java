@@ -9,6 +9,7 @@ public class Vector implements Iterable<Float>{
         v = values;
     }
 
+    //requires dim > 0
     public Vector(int dim){
         v = new float[dim+1];
     }

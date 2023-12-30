@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0043b105-4329-47e9-bf92-8ac9578d2dfd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Vector/VecIter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Vector/Vector.java" afterDir="false" />
+    <list default="true" id="0043b105-4329-47e9-bf92-8ac9578d2dfd" name="Changes" comment="removed import">
+      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/VectorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +40,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.MyTestSuite.VectorTest.executor": "Run",
+    "JUnit.MyTestsSuite.VectorTest.executor": "Run",
+    "JUnit.Unnamed.executor": "Run",
+    "JUnit.VectorTests.Dimension.executor": "Run",
+    "JUnit.VectorTests.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -56,6 +57,49 @@
     "settings.editor.selected.configurable": "project.propCompiler"
   }
 }]]></component>
+  <component name="RunManager" selected="JUnit.VectorTests">
+    <configuration name="VectorTests" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="RenderEngine" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="VectorTests" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VectorTests.Dimension" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RenderEngine" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="VectorTests" />
+      <option name="METHOD_NAME" value="Dimension(int)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VectorTests.VectorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RenderEngine" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="VectorTests" />
+      <option name="METHOD_NAME" value="VectorTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.VectorTests" />
+      <item itemvalue="JUnit.VectorTests.Dimension" />
+      <item itemvalue="JUnit.VectorTests.VectorTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.VectorTests.Dimension" />
+        <item itemvalue="JUnit.VectorTests.VectorTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -65,6 +109,37 @@
       <option name="presentableId" value="Default" />
       <updated>1703955820289</updated>
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <option name="closed" value="true" />
+      <created>1703956765124</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703956765124</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Vector package">
+      <option name="closed" value="true" />
+      <created>1703956773900</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703956773900</updated>
+    </task>
+    <task id="LOCAL-00003" summary="removed import">
+      <option name="closed" value="true" />
+      <created>1703956804886</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1703956804886</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <MESSAGE value="Vector package" />
+    <MESSAGE value="removed import" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed import" />
   </component>
 </project>
