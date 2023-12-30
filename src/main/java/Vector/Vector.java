@@ -34,6 +34,14 @@ public class Vector implements Iterable<Float>{
         v[index] = value;
     }
 
+    public float length(){
+        float len = 0;
+        for (float f : this){
+            len+= f*f;
+        }
+        return (float) Math.sqrt(len);
+    }
+
     //ensures returns dimension of vector (without homogenous component)
     public int dimension(){
         return v.length - 1;
@@ -66,5 +74,10 @@ public class Vector implements Iterable<Float>{
     @Override
     public int hashCode() {
         return Arrays.hashCode(v);
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(v);
     }
 }

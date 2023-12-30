@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0043b105-4329-47e9-bf92-8ac9578d2dfd" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Vector/VecOperations.java" afterDir="false" />
+    <list default="true" id="0043b105-4329-47e9-bf92-8ac9578d2dfd" name="Changes" comment="warning">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Vector/VecOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Vector/VecOperations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Vector/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Vector/Vector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/VectorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VectorTests.java" afterDir="false" />
     </list>
@@ -28,10 +28,10 @@
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2aGraPIWPlnVO9L19sBBc3wnGeF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -44,6 +44,7 @@
     "JUnit.MyTestsSuite.VectorTest.executor": "Run",
     "JUnit.Unnamed.executor": "Run",
     "JUnit.VectorTests.Dimension.executor": "Run",
+    "JUnit.VectorTests.correctConversionToDegrees.executor": "Run",
     "JUnit.VectorTests.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -88,13 +89,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="VectorTests.correctConversionToDegrees" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RenderEngine" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="VectorTests" />
+      <option name="METHOD_NAME" value="correctConversionToDegrees" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="JUnit.VectorTests" />
+      <item itemvalue="JUnit.VectorTests.correctConversionToDegrees" />
       <item itemvalue="JUnit.VectorTests.Dimension" />
       <item itemvalue="JUnit.VectorTests.VectorTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.VectorTests.correctConversionToDegrees" />
         <item itemvalue="JUnit.VectorTests.Dimension" />
         <item itemvalue="JUnit.VectorTests.VectorTest" />
       </list>
@@ -165,7 +178,23 @@
       <option name="project" value="LOCAL" />
       <updated>1703958377130</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="basic vec operations">
+      <option name="closed" value="true" />
+      <created>1703959870744</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1703959870744</updated>
+    </task>
+    <task id="LOCAL-00009" summary="warning">
+      <option name="closed" value="true" />
+      <created>1703959885443</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1703959885443</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -175,6 +204,8 @@
     <MESSAGE value="tests" />
     <MESSAGE value="Design by contract" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="basic vec operations" />
+    <MESSAGE value="warning" />
+    <option name="LAST_COMMIT_MESSAGE" value="warning" />
   </component>
 </project>
