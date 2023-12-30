@@ -34,12 +34,88 @@ public class Vector implements Iterable<Float>{
         v[index] = value;
     }
 
+
+    //ensures length of vector
     public float length(){
         float len = 0;
         for (float f : this){
             len+= f*f;
         }
         return (float) Math.sqrt(len);
+    }
+
+    //ensures normalizes the vector
+    public void normalize(){
+       scalarMult(1f/length());
+    }
+
+    public void dehomogenize(){
+        float scalar = 1f/v[size()-1];
+        v[size()-1] = 1f;
+        for (int i = 0; i < dimension(); i++) {
+            v[i] = v[i]*scalar;
+        }
+    }
+    //requires dimension() == v.dimension()
+    //ensures result of vector addition
+    public void add(Vector v){
+        for (int i = 0; i < dimension(); i++) {
+            set(i, get(i) + v.get(i));
+        }
+    }
+
+    //requires v != null
+    //ensures scalar multiplication
+    public void scalarMult(float scalar){
+        for(int i = 0; i < dimension(); i++){
+            set(i, get(i) * scalar);
+        }
+    }
+
+    //requires v1.dimension() == v2.dimension()
+    //ensures result of vector subtraction
+    public void sub(Vector v){
+        v.scalarMult(-1f);
+        add(v);
+    }
+
+    //requires dimension() == v.dimension()
+    //ensures vector multiplication
+    public float mult(Vector v){
+        float result = 0;
+        for (int i = 0; i < dimension(); i++) {
+            result += get(i) * v.get(i);
+        }
+        return result;
+    }
+
+    //requires dimension() == v.dimension()
+    //ensures vector multiplication
+    //NOTE: just an alias of mult()
+    public float dot(Vector v){
+        return mult(v);
+    }
+
+    //requires dimension == 3 && v.dimension == 3
+    //ensures returns result of vector cross product as a new vector
+    public Vector crossProduct(Vector v2){
+        Vector cross = new Vector(3);
+        cross.set(0, get(1) * v2.get(2) - get(2) * v2.get(1));
+        cross.set(1, get(2) * v2.get(0) - get(0) * v2.get(2));
+        cross.set(2, get(0) * v2.get(1) - get(1) * v2.get(0));
+        return cross;
+    }
+
+    //requires dimension() == v.dimension()
+    //ensures returns the angle between two vectors in radians
+    public float angleInRadians(Vector v){
+        return (float) Math.acos(mult(v) / (length() * v.length()));
+    }
+
+    //requires dimension() == v.dimension()
+    //ensures returns the angle between two vectors in degrees
+    public float angleInDegrees(Vector v){
+        return (float) (angleInRadians(v) * 180f/Math.PI);
     }
 
     //ensures returns dimension of vector (without homogenous component)

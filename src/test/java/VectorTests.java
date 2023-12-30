@@ -69,23 +69,25 @@ public class VectorTests {
         Vector v1 = new Vector(1, 2, 3);
         Vector v2 = new Vector(1, 2, 3);
 
-        Vector result = VecOperations.add(v1, v2);
+        v1.add(v2);
 
-        assertEquals(new Vector(2, 4, 6), result);
+        assertEquals(new Vector(2, 4, 6), v1);
     }
 
     @Test
     void ScalarMult(){
         Vector v = new Vector(2, 4, -3);
-        assertEquals(new Vector(-2, -4, 3), VecOperations.scalarMult(v, -1f));
-        assertEquals(new Vector(4, 8, -6), VecOperations.scalarMult(v, 2f));
+        v.scalarMult(-1f);
+        assertEquals(new Vector(-2, -4, 3), v);
+
     }
 
     @Test
     void Subtraction(){
         Vector v1 = new Vector(-3, 2, 1);
         Vector v2 = new Vector(-3, 2, 1);
-        assertEquals(new Vector(0, 0, 0), VecOperations.sub(v1, v2));
+        v1.sub(v2);
+        assertEquals(new Vector(0, 0, 0), v1);
     }
 
     @Test
@@ -93,8 +95,7 @@ public class VectorTests {
         Vector v1 = new Vector(2, 3, 4);
         Vector v2 = new Vector(1, 5, 3);
 
-        assertEquals(29, VecOperations.mult(v1, v2));
-        assertEquals(29, VecOperations.dot(v1, v2));
+        assertEquals(29, v1.dot(v2));
     }
 
     @Test
@@ -108,30 +109,41 @@ public class VectorTests {
     void Angle(){
         Vector v1 = new Vector(0, 1, 0);
         Vector v2 = new Vector(1, 0, 0);
-        assertEquals(Math.PI/2, VecOperations.angleInRadians(v1, v2), floatErrorDelta);
+        assertEquals(Math.PI/2, v1.angleInRadians(v2), floatErrorDelta);
 
         v1 = new Vector(1, 0, 0);
         v2 = new Vector(-1, 0, 0);
-        assertEquals(Math.PI, VecOperations.angleInRadians(v1, v2), floatErrorDelta);
+        assertEquals(Math.PI, v1.angleInRadians(v2), floatErrorDelta);
 
         v1 = new Vector(1, 1, 0);
         v2 = new Vector(1, 0, 0);
-        assertEquals(Math.PI/4, VecOperations.angleInRadians(v1, v2), floatErrorDelta);
+        assertEquals(Math.PI/4, v1.angleInRadians(v2), floatErrorDelta);
     }
 
     @Test
     void correctConversionToDegrees(){
         Vector v1 = new Vector(0, 1, 0);
         Vector v2 = new Vector(1, 0, 0);
-        assertEquals(90f, VecOperations.angleInDegrees(v1, v2), floatErrorDelta);
+        assertEquals(90f, v1.angleInDegrees(v2), floatErrorDelta);
 
         v1 = new Vector(1, 0, 0);
         v2 = new Vector(-1, 0, 0);
-        assertEquals(180, VecOperations.angleInDegrees(v1, v2), floatErrorDelta);
+        assertEquals(180, v1.angleInDegrees(v2), floatErrorDelta);
 
         v1 = new Vector(1, 1, 0);
         v2 = new Vector(1, 0, 0);
-        assertEquals(45, VecOperations.angleInDegrees(v1, v2), floatErrorDelta);
+        assertEquals(45, v1.angleInDegrees(v2), floatErrorDelta);
+    }
+
+    @Test
+    void Normalize(){
+        Vector v1 = new Vector(4, 4, 2);
+        v1.normalize();
+        assertEquals(new Vector(2f/3f, 2f/3f, 1f/3f), v1);
+
+        v1 = new Vector(1, 0, 0);
+        v1.normalize();
+        assertEquals(new Vector(1, 0, 0), v1);
     }
 
 }
