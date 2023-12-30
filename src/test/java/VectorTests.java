@@ -65,7 +65,7 @@ public class VectorTests {
 
         Vector result = VecOperations.add(v1, v2);
 
-        assertTrue(new Vector(2, 4, 6).equals(result));
+        assertEquals(new Vector(2, 4, 6), result);
     }
 
     @Test
