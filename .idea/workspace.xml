@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0043b105-4329-47e9-bf92-8ac9578d2dfd" name="Changes" comment="vector operations are not static anymore">
-      <change beforePath="$PROJECT_DIR$/src/test/java/VectorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VectorTests.java" afterDir="false" />
+    <list default="true" id="0043b105-4329-47e9-bf92-8ac9578d2dfd" name="Changes" comment="TestSuite adjusted">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +208,23 @@
       <option name="project" value="LOCAL" />
       <updated>1703975975370</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="TestSuite adjusted">
+      <option name="closed" value="true" />
+      <created>1703976412554</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1703976412554</updated>
+    </task>
+    <task id="LOCAL-00013" summary="TestSuite adjusted">
+      <option name="closed" value="true" />
+      <created>1703976416143</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1703976416143</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -221,6 +238,7 @@
     <MESSAGE value="warning" />
     <MESSAGE value="operations" />
     <MESSAGE value="vector operations are not static anymore" />
-    <option name="LAST_COMMIT_MESSAGE" value="vector operations are not static anymore" />
+    <MESSAGE value="TestSuite adjusted" />
+    <option name="LAST_COMMIT_MESSAGE" value="TestSuite adjusted" />
   </component>
 </project>
