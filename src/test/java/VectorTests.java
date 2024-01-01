@@ -154,4 +154,12 @@ public class VectorTests {
         assertEquals(new Vector(1, 2, 2), v1);
     }
 
+    @Test
+    void Fill(){
+        Vector v1 = new Vector(2f, 6f, 1f);
+        v1.fill(3.5f);
+        assertEquals(new Vector(3.5f, 3.5f, 3.5f), v1);
+        assertEquals(1f, v1.get(v1.size()-1));
+    }
+
 }

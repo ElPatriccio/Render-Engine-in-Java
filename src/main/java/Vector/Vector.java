@@ -23,19 +23,26 @@ public class Vector implements Iterable<Float>{
         v[dim] = 1;
     }
 
-    //requires index >= 0 && index < dimension
+    //requires index >= 0 && index < size
     //ensures returns element at index = index
     public float get(int index){
         return v[index];
     }
-    //requires index >= 0 && index < dimension
+
+    //requires index >= 0 && index < size
     //ensures sets element at index = index
     public void set(int index, float value){
         v[index] = value;
     }
 
+    //ensures fills the vector with value (except the homogenous component)
+    public void fill(float value) {
+        for (int i = 0; i < dimension(); i++) {
+            v[i] = value;
+        }
+    }
 
-    //ensures length of vector
+    //ensures length of vector is returned
     public float length(){
         float len = 0;
         for (float f : this){
