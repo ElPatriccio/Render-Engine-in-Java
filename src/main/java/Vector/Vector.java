@@ -5,7 +5,6 @@ import java.util.Iterator;
 
 public class Vector implements Iterable<Float>{
     private final float[] v;
-
     public Vector(float ...values){
         v = new float[values.length+1];
         for (int i = 0; i < dimension(); i++) {
@@ -148,6 +147,15 @@ public class Vector implements Iterable<Float>{
     //ensures returns iterator over all elements (with homogenous component)
     public Iterator<Float> homogenizedIterator(){
         return new VecIter(v, true);
+    }
+
+    //ensures returned Vector is equal to this, but not identical
+    public Vector deepCopy(){
+        Vector copy = new Vector(dimension());
+        for (int i = 0; i < dimension(); i++) {
+            copy.set(i, get(i));
+        }
+        return copy;
     }
 
     @Override

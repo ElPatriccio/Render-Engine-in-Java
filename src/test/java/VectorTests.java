@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Iterator;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class VectorTests {
@@ -160,6 +160,17 @@ public class VectorTests {
         v1.fill(3.5f);
         assertEquals(new Vector(3.5f, 3.5f, 3.5f), v1);
         assertEquals(1f, v1.get(v1.size()-1));
+    }
+
+    @Test
+    void DeepCopy(){
+        Vector v1 = new Vector(1f, 3f, 4f);
+        Vector v2 = v1.deepCopy();
+        assertNotSame(v1, v2);
+        assertEquals(v1, v2);
+        v1.set(1, 2f);
+        assertNotEquals(v1, v2);
+
     }
 
 }
