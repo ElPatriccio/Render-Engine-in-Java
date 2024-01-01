@@ -149,6 +149,14 @@ public class Vector implements Iterable<Float>{
         return new VecIter(v, true);
     }
 
+    public Matrix toMatrix(){
+        Matrix result = new Matrix(1, dimension());
+        for (int i = 0; i < dimension(); i++) {
+            result.set(0, i, get(i));
+        }
+        return result;
+    }
+
     //ensures returned Vector is equal to this, but not identical
     public Vector deepCopy(){
         Vector copy = new Vector(dimension());
