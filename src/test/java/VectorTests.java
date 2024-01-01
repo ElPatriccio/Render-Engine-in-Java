@@ -40,7 +40,7 @@ public class VectorTests {
     void Iterator(){
         int i = 0;
         Vector v = new Vector(1, 2, 3);
-        for (Float f : v) {
+        for (Float ignored : v) {
             i++;
         }
         assertEquals(v.dimension(), i);
