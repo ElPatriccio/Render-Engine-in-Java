@@ -60,7 +60,7 @@ public class Matrix implements Iterable<Float>{
 
     @Override
     public Iterator<Float> iterator() {
-        return null;
+        return new MatIter(this);
     }
 
     @Override
@@ -77,5 +77,32 @@ public class Matrix implements Iterable<Float>{
             builder.append("]\n");
         }
         return builder.toString();
+    }
+}
+
+class MatIter implements Iterator<Float>{
+
+    private final Matrix m;
+    private int i = 0;
+    private int row = 0;
+    private int col = 0;
+    public MatIter(Matrix m){
+       this.m = m;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return i < m.size();
+    }
+
+    @Override
+    public Float next() {
+        float result = m.get(row, col++);
+        if(col == m.cols()){
+            col = 0;
+            row++;
+        }
+        i++;
+        return result;
     }
 }

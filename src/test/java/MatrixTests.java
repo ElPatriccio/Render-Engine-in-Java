@@ -1,5 +1,8 @@
 import BasicDatatypes.Matrix;
 import org.junit.jupiter.api.Test;
+
+import java.util.Iterator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MatrixTests {
@@ -43,6 +46,42 @@ public class MatrixTests {
         m.transpose();
 
         assertEquals(2f, m.get(0, 1));
+
+    }
+
+    @Test
+    void Iterator(){
+        Matrix m = new Matrix(2);
+        m.set(0, 0, 1f);
+        m.set(0, 1, 2f);
+        m.set(1, 0, 3f);
+        m.set(1, 1, 4f);
+
+        Iterator<Float> iter = m.iterator();
+
+        assertTrue(iter.hasNext());
+        assertEquals(1f, iter.next());
+        assertTrue(iter.hasNext());
+        assertEquals(2f, iter.next());
+        assertTrue(iter.hasNext());
+        assertEquals(3f, iter.next());
+        assertTrue(iter.hasNext());
+        assertEquals(4f, iter.next());
+        assertFalse(iter.hasNext());
+
+        m.transpose();
+
+        iter = m.iterator();
+
+        assertTrue(iter.hasNext());
+        assertEquals(1f, iter.next());
+        assertTrue(iter.hasNext());
+        assertEquals(3f, iter.next());
+        assertTrue(iter.hasNext());
+        assertEquals(2f, iter.next());
+        assertTrue(iter.hasNext());
+        assertEquals(4f, iter.next());
+        assertFalse(iter.hasNext());
 
     }
 
