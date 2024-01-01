@@ -7,6 +7,7 @@ public class Matrix implements Iterable<Float>{
     private final float[] v;
     private int rows;
     private int cols;
+    private boolean transposed = false;
 
     public Matrix(int rows, int cols){
         v = new float[rows*cols];
@@ -18,16 +19,31 @@ public class Matrix implements Iterable<Float>{
         this(squaredDimension, squaredDimension);
     }
 
+    private int index(int row, int col){
+        if(transposed){
+            return col * cols + row;
+        }
+        return row * cols + col;
+    }
+
     //requires row < this.rows && col < this.cols
     //ensures returns correct element
     public float get(int row, int col){
-        return v[row * cols + col];
+        return v[index(row, col)];
     }
 
     //requires row < this.rows && col < this.cols
     //ensures sets correct element to value
     public void set(int row, int col, float value){
-        v[row * cols + col] = value;
+       v[index(row, col)] = value;
+    }
+
+    //ensures matrix is transposed
+    public void transpose(){
+        int tmp = rows;
+        rows = cols;
+        cols = tmp;
+        transposed = !transposed;
     }
 
     public int rows(){

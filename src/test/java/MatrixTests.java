@@ -26,4 +26,24 @@ public class MatrixTests {
         assertEquals("[1.0, 2.0]\n[3.0, 4.0]\n", m.toString());
     }
 
+    @Test
+    void Transpose(){
+        Matrix m = new Matrix(1, 2);
+        m.set(0, 0, 1f);
+        m.set(0, 1, 2f);
+
+        assertEquals(1f, m.get(0, 0));
+        assertEquals(2f, m.get(0, 1));
+
+        m.transpose();
+
+        assertEquals(1f, m.get(0, 0));
+        assertEquals(2f, m.get(1, 0));
+
+        m.transpose();
+
+        assertEquals(2f, m.get(0, 1));
+
+    }
+
 }
