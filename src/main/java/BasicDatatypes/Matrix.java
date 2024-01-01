@@ -50,6 +50,16 @@ public class Matrix implements Iterable<Float>{
        v[index(row, col)] = value;
     }
 
+    public void fillPattern(float ...values){
+        int va = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+              set(i, j, values[va]);
+              va = (va + 1) % values.length;
+            }
+        }
+    }
+
     //ensures matrix is transposed
     public void transpose(){
         int tmp = rows;
@@ -96,6 +106,49 @@ public class Matrix implements Iterable<Float>{
             }
             return sum;
         }
+    }
+
+    //requires solution != null
+    //ensures applies the gaussJordan algorithm
+    //        returns null iff there is no solution
+    private Matrix gaussJordan(Matrix solution) {
+
+        Matrix copy = deepCopy();
+        Matrix result = solution.deepCopy();
+
+        for (int i = 0; i < rows; i++) {
+            if(copy.get(i, i) == 0.0){
+                return null;
+            }
+            for (int j = 0; j < cols; j++) {
+                if(i != j){
+                    float ratio = copy.get(j, i)/copy.get(i, i);
+                    for (int k = 0; k < cols; k++) {
+                        copy.set(j, k, copy.get(j, k) - ratio * copy.get(i, k));
+                    }
+                    for (int k = 0; k < solution.cols; k++) {
+                        result.set(j, k, result.get(j, k) - ratio * result.get(i, k));
+                    }
+                }
+            }
+        }
+        for (int j = 0; j < result.cols; j++) {
+            for (int i = 0; i < rows; i++) {
+                result.set(i, j, result.get(i, j) / copy.get(i, i));
+            }
+        }
+
+        return result;
+    }
+
+    //requires this is square matrix
+    //ensures returns inverse iff there is any else null
+    public Matrix inverted(){
+        return gaussJordan(Matrix.identityMatrix(rows));
+    }
+
+    public Matrix solveLinEq(Vector solution){
+        return gaussJordan(solution.toMatrix());
     }
 
     public int rows(){

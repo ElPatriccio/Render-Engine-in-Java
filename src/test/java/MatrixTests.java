@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MatrixTests {
 
+    private static final float floatErrorDelta = 0.001f;
+
     @Test
     void GetSetElement(){
         Matrix m = new Matrix(2, 2);
@@ -126,4 +128,40 @@ public class MatrixTests {
         assertEquals(-5f, m.det());
     }
 
+    @Test
+    void FillPattern(){
+        Matrix m = new Matrix(3);
+        m.fillPattern(1, 2, 3, 4, 5, 6, 7, 8);
+        Matrix expected = new Matrix(3);
+
+        expected.set(0, 0, 1);
+        expected.set(0, 1, 2);
+        expected.set(0, 2, 3);
+        expected.set(1, 0, 4);
+        expected.set(1, 1, 5);
+        expected.set(1, 2, 6);
+        expected.set(2, 0, 7);
+        expected.set(2, 1, 8);
+        expected.set(2, 2, 1);
+
+        assertEquals(expected, m);
+    }
+
+    @Test
+    void Inverse(){
+        Matrix m = new Matrix(3);
+        m.fillPattern(2, 5, 7, 6, 2, 7, 7, 2, 2);
+
+        Matrix inverse = m.inverted();
+
+        assertEquals(-10f/151f, inverse.get(0, 0), floatErrorDelta);
+        assertEquals(4f/151f, inverse.get(0, 1), floatErrorDelta);
+        assertEquals(21f/151f, inverse.get(0, 2), floatErrorDelta);
+        assertEquals(37f/151f, inverse.get(1, 0), floatErrorDelta);
+        assertEquals(-45f/151f, inverse.get(1, 1), floatErrorDelta);
+        assertEquals(28f/151f, inverse.get(1, 2), floatErrorDelta);
+        assertEquals(-2f/151f, inverse.get(2, 0), floatErrorDelta);
+        assertEquals(31f/151f, inverse.get(2, 1), floatErrorDelta);
+        assertEquals(-26f/151f, inverse.get(2, 2), floatErrorDelta);
+    }
 }
