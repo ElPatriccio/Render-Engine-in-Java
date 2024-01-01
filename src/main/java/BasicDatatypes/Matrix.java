@@ -1,6 +1,5 @@
 package BasicDatatypes;
 
-import java.util.Arrays;
 import java.util.Iterator;
 
 public class Matrix implements Iterable<Float>{
@@ -29,6 +28,14 @@ public class Matrix implements Iterable<Float>{
     //ensures sets correct element to value
     public void set(int row, int col, float value){
         v[row * cols + col] = value;
+    }
+
+    public int rows(){
+        return this.rows;
+    }
+
+    public int cols(){
+        return this.cols;
     }
 
     public int size(){
