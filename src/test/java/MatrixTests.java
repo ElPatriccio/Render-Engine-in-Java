@@ -96,4 +96,34 @@ public class MatrixTests {
         assertEquals(m, Matrix.identityMatrix(2));
     }
 
+    @Test
+    void DeepCopy(){
+        Matrix m = new Matrix(2);
+        m.set(0, 0, 1);
+        m.set(0, 1, 0);
+        m.set(1, 0, 0);
+        m.set(1, 1, 1);
+
+        Matrix m2 = m.deepCopy();
+
+        assertNotSame(m, m2);
+        assertEquals(m, m2);
+    }
+
+    @Test
+    void Determinant(){
+        Matrix m = new Matrix(3);
+        m.set(0, 0, 2);
+        m.set(0, 1, 3);
+        m.set(0, 2, 2);
+        m.set(1, 0, 6);
+        m.set(1, 1, 6);
+        m.set(1, 2, 7);
+        m.set(2, 0, 3);
+        m.set(2, 1, 7);
+        m.set(2, 2, 3);
+
+        assertEquals(-5f, m.det());
+    }
+
 }

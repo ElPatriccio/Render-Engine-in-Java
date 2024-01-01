@@ -58,6 +58,46 @@ public class Matrix implements Iterable<Float>{
         transposed = !transposed;
     }
 
+    //requires this.rows == this.cols
+    //ensures returns determinant
+    public float det(){
+        return det(0);
+    }
+
+    //requires laplaceRow >= 0 < rows
+    //         this.rows == this.cols
+    //ensures returns determinant
+    public float det(int laplaceRow){
+        if(rows == 2){
+            return get(0, 0) * get(1, 1) - get(0, 1) * get(1, 0);
+        }
+        else{
+            float sum = 0;
+            for (int j = 0; j < cols; j++) {
+                if(get(laplaceRow, j) == 0){
+                    continue;
+                }
+                Matrix smaller = new Matrix(rows-1);
+                int row = 0;
+                for (int k = 0; k < rows; k++) {
+                    int col = 0;
+                    if(k == laplaceRow){
+                        continue;
+                    }
+                    for (int l = 0; l <cols; l++) {
+                        if(l == j){
+                            continue;
+                        }
+                        smaller.set(row, col++, get(k, l));
+                    }
+                    row++;
+                }
+                sum += (float) (Math.pow(-1.0, laplaceRow + j) * get(laplaceRow, j) * smaller.det());
+            }
+            return sum;
+        }
+    }
+
     public int rows(){
         return this.rows;
     }
@@ -73,6 +113,16 @@ public class Matrix implements Iterable<Float>{
     @Override
     public Iterator<Float> iterator() {
         return new MatIter(this);
+    }
+
+    public Matrix deepCopy(){
+        Matrix copy = new Matrix(rows, cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                copy.set(i, j, get(i, j));
+            }
+        }
+        return copy;
     }
 
     @Override
