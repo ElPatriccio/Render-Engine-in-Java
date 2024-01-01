@@ -49,8 +49,12 @@ public class Vector implements Iterable<Float>{
        scalarMult(1f/length());
     }
 
+
     public void dehomogenize(){
         float scalar = 1f/v[size()-1];
+        if(scalar == 1f){
+            return;
+        }
         v[size()-1] = 1f;
         for (int i = 0; i < dimension(); i++) {
             v[i] = v[i]*scalar;

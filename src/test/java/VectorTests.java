@@ -146,4 +146,12 @@ public class VectorTests {
         assertEquals(new Vector(1, 0, 0), v1);
     }
 
+    @Test
+    void Dehomogenize(){
+        Vector v1 = new Vector(2, 4, 4);
+        v1.set(3, 2);
+        v1.dehomogenize();
+        assertEquals(new Vector(1, 2, 2), v1);
+    }
+
 }
