@@ -85,4 +85,15 @@ public class MatrixTests {
 
     }
 
+    @Test
+    void IdentityMat(){
+        Matrix m = new Matrix(2);
+        m.set(0, 0, 1);
+        m.set(0, 1, 0);
+        m.set(1, 0, 0);
+        m.set(1, 1, 1);
+
+        assertEquals(m, Matrix.identityMatrix(2));
+    }
+
 }

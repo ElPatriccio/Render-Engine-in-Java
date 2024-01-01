@@ -1,6 +1,8 @@
 package BasicDatatypes;
 
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Objects;
 
 public class Matrix implements Iterable<Float>{
 
@@ -17,6 +19,16 @@ public class Matrix implements Iterable<Float>{
 
     public Matrix(int squaredDimension){
         this(squaredDimension, squaredDimension);
+    }
+
+    //requires dim >= 0
+    //ensures returns identity matrix with dimension dim x dim
+    public static Matrix identityMatrix(int dim){
+        Matrix id = new Matrix(dim);
+        for (int i = 0; i < dim; i++) {
+            id.set(i, i, 1);
+        }
+        return id;
     }
 
     private int index(int row, int col){
@@ -77,6 +89,21 @@ public class Matrix implements Iterable<Float>{
             builder.append("]\n");
         }
         return builder.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Matrix floats = (Matrix) o;
+        return rows == floats.rows && cols == floats.cols && transposed == floats.transposed && Arrays.equals(v, floats.v);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(rows, cols, transposed);
+        result = 31 * result + Arrays.hashCode(v);
+        return result;
     }
 }
 
