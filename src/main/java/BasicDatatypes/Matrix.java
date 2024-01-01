@@ -50,6 +50,7 @@ public class Matrix implements Iterable<Float>{
        v[index(row, col)] = value;
     }
 
+    //ensures fills matrix with values, if there is more room, it starts at the beginning of values
     public void fillPattern(float ...values){
         int va = 0;
         for (int i = 0; i < rows; i++) {
