@@ -5,12 +5,22 @@ import java.util.Iterator;
 
 public class Vector implements Iterable<Float>{
     private final float[] v;
-    public Vector(float ...values){
-        v = new float[values.length+1];
-        for (int i = 0; i < dimension(); i++) {
-            set(i, values[i]);
+    public Vector(boolean homogenized, float ...values){
+        if(homogenized){
+            v = values;
         }
-        set(v.length-1, 1);
+        else{
+            v = new float[values.length+1];
+            for (int i = 0; i < dimension(); i++) {
+                set(i, values[i]);
+            }
+            set(v.length-1, 1);
+        }
+
+    }
+
+    public Vector(float ...values){
+        this(false, values);
     }
 
     //requires dim > 0
@@ -179,13 +189,18 @@ public class Vector implements Iterable<Float>{
         return new VecIter(v, true);
     }
 
-    public Matrix toMatrix(){
+    public Matrix toMatrixDeep(){
         Matrix result = new Matrix(1, dimension());
         for (int i = 0; i < dimension(); i++) {
             result.set(0, i, get(i));
         }
         return result;
     }
+
+    public Matrix toMatrix(){
+        return new Matrix(1, dimension(), v);
+    }
+
 
     //ensures returned Vector is equal to this, but not identical
     public Vector deepCopy(){
