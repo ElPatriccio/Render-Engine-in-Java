@@ -3,6 +3,7 @@ package ObjectRep;
 import BasicDatatypes.Matrix;
 import BasicDatatypes.Vector;
 import Window.Window;
+import Transformation.Transformation3D;
 
 import java.util.*;
 
@@ -23,8 +24,81 @@ public class TriangleStrip implements ObjectRep{
         vertices = new ArrayList<>(8);
     }
 
-    public void addVertex(Vector v){
+    public static TriangleStrip square(float a){
+        TriangleStrip square = new TriangleStrip();
+        a /= 2;
+        square.add(new Vector(-a, -a, 0));
+        square.add(new Vector(-a, a, 0));
+        square.add(new Vector(a, -a, 0));
+        square.add(new Vector(a, a, 0));
+
+
+        return square;
+    }
+
+    public static TriangleStrip circle(float radius, int vertices){
+        TriangleStrip circle = new TriangleStrip();
+        Vector begin = new Vector(-1, 0, 0);
+        begin.scalarMult(radius);
+        circle.add(begin);
+        float phi = -3.145f/2;
+        while(phi < 3.145f/2){
+            float x = (float) (radius * Math.sin(phi));
+            float y = (float) (radius * Math.cos(phi));
+            circle.add(new Vector(x, y, 0));
+            circle.add(new Vector(x, -y, 0));
+            phi += 3.145f/((float)vertices / 2);
+        }
+        circle.add(Vector.scalarMult(new Vector(1, 0, 0), radius));
+
+        return circle;
+    }
+
+    public static TriangleStrip triangle(float width, float height){
+        TriangleStrip triangle = new TriangleStrip();
+        triangle.add(new Vector(-width/2, -height/2, 0));
+        triangle.add(new Vector(0, height/2, 0));
+        triangle.add(new Vector(width/2, -height/2, 0));
+        return triangle;
+    }
+
+    public static TriangleStrip cube(float len){
+        TriangleStrip cube = new TriangleStrip();
+        cube.add(new Vector(-1, 1, 1));
+        cube.add(new Vector(1, 1, 1));
+        cube.add(new Vector(-1, -1, 1));
+        cube.add(new Vector(1, -1, 1));
+        cube.add(new Vector(1, -1, -1));
+        cube.add(new Vector(1, 1, 1));
+        cube.add(new Vector(1, 1, -1));
+        cube.add(new Vector(-1, 1, 1));
+        cube.add(new Vector(-1, 1, -1));
+        cube.add(new Vector(-1, -1, 1));
+        cube.add(new Vector(-1, -1, -1));
+        cube.add(new Vector(1, -1, -1));
+        cube.add(new Vector(-1, 1, -1));
+        cube.add(new Vector(1, 1, -1));
+
+        cube.applyTransformation(Transformation3D.combineTransformation(Transformation3D.scale(len, len, len), Transformation3D.scale(0.5f, 0.5f, 0.5f)));
+
+        return cube;
+    }
+
+    public static TriangleStrip triangle(float width){
+        float c2 = width * width;
+        float a2 = width*width/4;
+        return TriangleStrip.triangle(width, (float) Math.sqrt(c2 - a2));
+    }
+
+    public void add(Vector v){
         vertices.add(v);
+    }
+
+    public int amountTriangles(){
+        if(amountOfVertices() < 3){
+            return 0;
+        }
+        return amountOfVertices() -2;
     }
 
     @Override
@@ -56,14 +130,14 @@ public class TriangleStrip implements ObjectRep{
 
     @Override
     public void draw(Window w) {
-
+        w.drawTriangleStrip(this);
     }
 
     @Override
     public ObjectRep deepCopy() {
         TriangleStrip copy = new TriangleStrip();
         for(Vector v : this){
-            copy.addVertex(v);
+            copy.add(v);
         }
         return copy;
     }
