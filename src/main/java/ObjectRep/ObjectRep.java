@@ -3,7 +3,7 @@ package ObjectRep;
 import BasicDatatypes.Matrix;
 import BasicDatatypes.Vector;
 
-import Window.Window;
+import Window.WindowCD;
 
 
 public interface ObjectRep extends Iterable<Vector> {
@@ -18,6 +18,6 @@ public interface ObjectRep extends Iterable<Vector> {
 
     int amountOfVertices();
 
-    void draw(Window w);
+    void draw(WindowCD w);
     ObjectRep deepCopy();
 }

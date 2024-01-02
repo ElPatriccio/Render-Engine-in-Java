@@ -6,20 +6,20 @@ import codedraw.CodeDraw;
 
 import java.awt.Color;
 
-public class Window {
+public class WindowCD {
     private final CodeDraw window;
     private Color color = Color.BLACK;
     private int lineWidth = 1;
 
     private final Vector middle;
 
-    public Window(int width, int height){
+    public WindowCD(int width, int height){
         window = new CodeDraw(width, height);
         middle = new Vector(width/2f, height/2f);
         drawCS();
     }
 
-    public Window(int sideLength){
+    public WindowCD(int sideLength){
         this(sideLength, sideLength);
     }
 
@@ -187,6 +187,10 @@ public class Window {
         }
     }
 
+    public void clear(){
+        window.clear();
+        drawCS();
+    }
     public void show(){
         window.show();
     }
