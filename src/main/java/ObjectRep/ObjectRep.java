@@ -4,6 +4,7 @@ import BasicDatatypes.Matrix;
 import BasicDatatypes.Vector;
 
 import Window.WindowCD;
+import Window.WindowJF;
 
 
 public interface ObjectRep extends Iterable<Vector> {
@@ -19,5 +20,6 @@ public interface ObjectRep extends Iterable<Vector> {
     int amountOfVertices();
 
     void draw(WindowCD w);
+    void draw(WindowJF w);
     ObjectRep deepCopy();
 }

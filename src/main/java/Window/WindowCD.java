@@ -28,7 +28,7 @@ public class WindowCD {
     }
 
     private int convY(float y){
-        return (int) (middle.get(0) + y * -80f);
+        return (int) (middle.get(1) + y * -80f);
     }
 
     private void drawCS(){

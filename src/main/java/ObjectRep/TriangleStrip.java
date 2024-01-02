@@ -4,6 +4,7 @@ import BasicDatatypes.Matrix;
 import BasicDatatypes.Vector;
 import Window.WindowCD;
 import Transformation.Transformation3D;
+import Window.WindowJF;
 
 import java.util.*;
 
@@ -130,6 +131,11 @@ public class TriangleStrip implements ObjectRep{
 
     @Override
     public void draw(WindowCD w) {
+        w.drawTriangleStrip(this);
+    }
+
+    @Override
+    public void draw(WindowJF w){
         w.drawTriangleStrip(this);
     }
 
