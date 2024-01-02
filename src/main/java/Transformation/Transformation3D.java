@@ -50,4 +50,12 @@ public class Transformation3D {
         rotate.set(1, 1, (float) Math.cos(radians));
         return rotate;
     }
+
+    public static Matrix combineTransformation(Matrix ...matrices){
+        Matrix result = matrices[0];
+        for (int i = 1; i < matrices.length; i++) {
+            result = result.mult(matrices[i]);
+        }
+        return result;
+    }
 }
