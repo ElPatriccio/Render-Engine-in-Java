@@ -164,4 +164,102 @@ public class MatrixTests {
         assertEquals(31f/151f, inverse.get(2, 1), floatErrorDelta);
         assertEquals(-26f/151f, inverse.get(2, 2), floatErrorDelta);
     }
+
+    @Test
+    void Addition(){
+        Matrix m = new Matrix(3);
+        m.fill(1f);
+        Matrix result = new Matrix(3);
+        result.fill(2f);
+        m.add(m);
+        assertEquals(result, m);
+    }
+
+    @Test
+    void ScalarMult(){
+        Matrix m = new Matrix(2);
+        m.fill(3f);
+        Matrix result = new Matrix(2);
+        result.fill(6f);
+
+        m.scalarMult(2f);
+
+        assertEquals(result, m);
+    }
+
+    @Test
+    void Subtraction(){
+        Matrix m = new Matrix(3);
+        m.fill(3f);
+
+        Matrix m2 = new Matrix(3);
+        m2.fill(2f);
+
+        Matrix result = new Matrix(3);
+        result.fill(1f);
+
+        m.sub(m2);
+
+        assertEquals(result, m);
+    }
+
+    @Test
+    void SubtractionSideEffect(){
+        Matrix m = new Matrix(3);
+        m.fill(3f);
+
+        Matrix m2 = new Matrix(3);
+        m2.fill(2f);
+
+        Matrix result = new Matrix(3);
+        result.fill(2f);
+
+        m.sub(m2);
+
+        assertEquals(result, m2);
+    }
+
+    @Test
+    void Multiplication(){
+        Matrix m1 = new Matrix(3);
+        m1.fillPattern(5, 4, 4, 0, 2, 3, 7, 5, 1);
+        Matrix m2 = new Matrix(3);
+        m2.fillPattern(5, 7, 1, 7, 2, 3, 6, 3, 0);
+
+        Matrix expected = new Matrix(3);
+        expected.fillPattern(77, 55, 17, 32, 13, 6, 76, 62, 22);
+        assertEquals(expected, m1.mult(m2));
+    }
+    @Test
+    void MultiplicationDifferentDim(){
+        Matrix m1 = new Matrix(2, 3);
+        Matrix m2 = new Matrix(3);
+
+        m1.fillPattern(5, 4, 3, 0, 2, 1);
+        m2.fillPattern(1, 2, 5, 3, 4, 5, 5, 6, 3);
+
+        Matrix expected = new Matrix(2, 3);
+        expected.fillPattern(32, 44, 54, 11, 14, 13);
+
+        assertEquals(expected, m1.mult(m2));
+    }
+
+    @Test
+    void MultiplicationSideEffects(){
+        Matrix m1 = new Matrix(2, 3);
+        Matrix m2 = new Matrix(3);
+
+        m1.fillPattern(5, 4, 3, 0, 2, 1);
+        m2.fillPattern(1, 2, 5, 3, 4, 5, 5, 6, 3);
+
+        Matrix mc1 = m1.deepCopy();
+        Matrix mc2 = m2.deepCopy();
+
+        Matrix expected = new Matrix(2, 3);
+        expected.fillPattern(32, 44, 54, 11, 14, 13);
+        m1.mult(m2);
+
+        assertEquals(mc1, m1);
+        assertEquals(mc2, m2);
+    }
 }

@@ -50,6 +50,15 @@ public class Matrix implements Iterable<Float>{
        v[index(row, col)] = value;
     }
 
+    //ensures fills whole matrix with value
+    public void fill(float value){
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                set(i, j, value);
+            }
+        }
+    }
+
     //ensures fills matrix with values, if there is more room, it starts at the beginning of values
     public void fillPattern(float ...values){
         int va = 0;
@@ -67,6 +76,12 @@ public class Matrix implements Iterable<Float>{
         rows = cols;
         cols = tmp;
         transposed = !transposed;
+    }
+
+    public Matrix transposed(){
+        Matrix result = this.deepCopy();
+        result.transpose();
+        return result;
     }
 
     //requires this.rows == this.cols
@@ -154,6 +169,59 @@ public class Matrix implements Iterable<Float>{
 
     public int rows(){
         return this.rows;
+    }
+
+    //requires m has to be the equal dimension as this
+    public void add(Matrix m){
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                set(i, j, get(i, j) + m.get(i, j));
+            }
+        }
+    }
+    //requires m1 has to be the equal dimension as m2
+    public static Matrix add(Matrix m1, Matrix m2){
+        Matrix result = m1.deepCopy();
+        result.add(m2);
+        return result;
+    }
+
+    public void scalarMult(float scalar){
+        for (int i = 0; i < size(); i++) {
+            v[i] = v[i] * scalar;
+        }
+    }
+
+    public static Matrix scalarMult(Matrix m, float scalar){
+        Matrix result = m.deepCopy();
+        result.scalarMult(scalar);
+        return result;
+    }
+
+    //requires m has to be of equal dimension as this
+    public void sub(Matrix m){
+        add(Matrix.scalarMult(m, -1f));
+    }
+
+    public static Matrix sub(Matrix m1, Matrix m2){
+        Matrix result = m1.deepCopy();
+        result.sub(m2);
+        return result;
+    }
+
+    public Matrix mult(Matrix m){
+
+        Matrix result = new Matrix(rows, m.cols());
+        for (int i = 0; i < rows(); i++) {
+            for (int j = 0; j < m.cols(); j++) {
+                float sum = 0;
+                for (int k = 0; k < cols(); k++) {
+                    sum += get(i, k) * m.get(k, j);
+                }
+                result.set(i, j, sum);
+            }
+        }
+        return result;
     }
 
     public int cols(){
