@@ -1,4 +1,6 @@
 import BasicDatatypes.Matrix;
+import BasicDatatypes.Vector;
+import Transformation.Transformation3D;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
@@ -261,5 +263,14 @@ public class MatrixTests {
 
         assertEquals(mc1, m1);
         assertEquals(mc2, m2);
+    }
+
+    @Test
+    void MultiplicationWithVector(){
+        Matrix m = Transformation3D.translate(1, 0, 0);
+        Vector v = new Vector(2, 4, 5);
+
+        assertEquals(new Vector(3, 4, 5), m.mult(v));
+
     }
 }

@@ -21,6 +21,12 @@ public class Matrix implements Iterable<Float>{
         this(squaredDimension, squaredDimension);
     }
 
+    public Matrix(int rows, int cols, float[] v){
+        this.v = v;
+        this.rows = rows;
+        this.cols = cols;
+    }
+
     //requires dim >= 0
     //ensures returns identity matrix with dimension dim x dim
     public static Matrix identityMatrix(int dim){
@@ -164,7 +170,7 @@ public class Matrix implements Iterable<Float>{
     }
 
     public Matrix solveLinEq(Vector solution){
-        return gaussJordan(solution.toMatrix());
+        return gaussJordan(solution.toMatrixDeep());
     }
 
     public int rows(){
@@ -222,6 +228,12 @@ public class Matrix implements Iterable<Float>{
             }
         }
         return result;
+    }
+
+    public Vector mult(Vector v){
+        Matrix op = v.toMatrix();
+        op.transpose();
+        return new Vector(true, mult(op).v);
     }
 
     public int cols(){
