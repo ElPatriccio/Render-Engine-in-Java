@@ -1,5 +1,4 @@
 import BasicDatatypes.Matrix;
-import BasicDatatypes.Vector;
 import ObjectRep.ObjectRep;
 import ObjectRep.TriangleStrip;
 import Transformation.Transformation3D;
