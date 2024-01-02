@@ -91,6 +91,14 @@ public class VectorTests {
     }
 
     @Test
+    void SubtractionSideEffect(){
+        Vector v1 = new Vector(-3, 2, 1);
+        Vector v2 = new Vector(-3, 2, 1);
+        v1.sub(v2);
+        assertEquals(new Vector(-3, 2, 1), v2);
+    }
+
+    @Test
     void Multiplication(){
         Vector v1 = new Vector(2, 3, 4);
         Vector v2 = new Vector(1, 5, 3);
