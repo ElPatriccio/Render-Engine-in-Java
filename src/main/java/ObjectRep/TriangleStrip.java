@@ -102,12 +102,18 @@ public class TriangleStrip implements ObjectRep{
         return amountOfVertices() -2;
     }
 
+    public Vector surfaceNormal(int triangle){
+        Vector[] vs = getTriangle(triangle);
+        return vs[0].crossProduct(vs[2]);
+    }
+
     @Override
     public Vector get(int index) {
         return vertices.get(index);
     }
     public Vector[] getTriangle(int index){
-        return new Vector[]{vertices.get(index), vertices.get(index+1), vertices.get(index+2)};
+        return index % 2 == 0 ? new Vector[]{vertices.get(index), vertices.get(index + 1), vertices.get(index + 2)}
+                              : new Vector[]{vertices.get(index + 1), vertices.get(index), vertices.get(index + 2)};
     }
 
     @Override
