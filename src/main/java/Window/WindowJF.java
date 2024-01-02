@@ -2,13 +2,11 @@ package Window;
 import BasicDatatypes.Vector;
 import ObjectRep.ObjectRep;
 import ObjectRep.TriangleStrip;
-import Transformation.Transformation3D;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.awt.image.WritableRaster;
 import javax.swing.*;
 public class WindowJF {
     private BufferedImage image;
@@ -26,12 +24,7 @@ public class WindowJF {
         frame.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
         frame.add(label);
         JButton button = new JButton("Create Cube");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                createCube();
-            }
-        });
+        button.addActionListener(e -> createCube());
         
         frame.add(button);
 
