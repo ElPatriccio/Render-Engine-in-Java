@@ -39,7 +39,6 @@ public class WindowTest {
 //        Cube();
 //        ApplyTransformToCube();
 //        CubeAnimation();
-        Fill();
     }
     private static void ShowWindowWithCoordinates(){
         WindowCD w = new WindowCD(400);
