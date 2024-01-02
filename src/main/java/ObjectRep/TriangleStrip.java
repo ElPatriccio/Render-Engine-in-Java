@@ -6,7 +6,9 @@ import Window.WindowCD;
 import Transformation.Transformation3D;
 import Window.WindowJF;
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 public class TriangleStrip implements ObjectRep{
 
@@ -105,6 +107,9 @@ public class TriangleStrip implements ObjectRep{
     @Override
     public Vector get(int index) {
         return vertices.get(index);
+    }
+    public Vector[] getTriangle(int index){
+        return new Vector[]{vertices.get(index), vertices.get(index+1), vertices.get(index+2)};
     }
 
     @Override

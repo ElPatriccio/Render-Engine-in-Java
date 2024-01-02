@@ -1,4 +1,5 @@
 import BasicDatatypes.Matrix;
+import BasicDatatypes.Vector;
 import ObjectRep.ObjectRep;
 import ObjectRep.TriangleStrip;
 import Transformation.Transformation3D;
@@ -30,14 +31,15 @@ public class WindowTest {
     }
 
     public static void main(String[] args) {
-        ShowWindowWithCoordinates();
-        DrawPixel();
-        DrawLine();
-        Color();
-        Square();
-        Cube();
-        ApplyTransformToCube();
-        CubeAnimation();
+//        ShowWindowWithCoordinates();
+//        DrawPixel();
+//        DrawLine();
+//        Color();
+//        Square();
+//        Cube();
+//        ApplyTransformToCube();
+//        CubeAnimation();
+        Fill();
     }
     private static void ShowWindowWithCoordinates(){
         WindowCD w = new WindowCD(400);

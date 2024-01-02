@@ -61,6 +61,7 @@ public class WindowCD {
 
     public void setColor(Color color){
         this.color = color;
+        window.setColor(color);
     }
 
     public void setLineWidth(int width){
@@ -186,10 +187,13 @@ public class WindowCD {
             drawLine(v2, v3);
         }
     }
+    public void clear(boolean showCs){
+        window.clear();
+        if(showCs) drawCS();
+    }
 
     public void clear(){
-        window.clear();
-        drawCS();
+        clear(true);
     }
     public void show(){
         window.show();
