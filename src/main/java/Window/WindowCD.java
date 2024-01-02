@@ -5,6 +5,8 @@ import ObjectRep.*;
 import codedraw.CodeDraw;
 
 import java.awt.Color;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class WindowCD {
     private final CodeDraw window;
@@ -156,6 +158,33 @@ public class WindowCD {
         drawLine(v1.get(0), v1.get(1), v2.get(0), v2.get(1));
     }
 
+    public void floodFill(Vector seed) {
+        int oldLineWidth = lineWidth;
+        lineWidth = 1;
+        int x = convX(seed.get(0));
+        int y = convY(seed.get(1));
+        Color oldColor = window.getPixel(x, y);
+        Queue<Vector> queue = new LinkedList<>();
+        queue.add(new Vector(x, y));
+
+        while (!queue.isEmpty()) {
+            Vector curr = queue.poll();
+            int currX = (int) curr.get(0);
+            int currY = (int) curr.get(1);
+
+            if (currX >= 0 && currX < window.getWidth() && currY >= 0 && currY < window.getHeight()) {
+                if (window.getPixel(currX, currY).getRGB() == oldColor.getRGB()) {
+                    dP(currX, currY);
+
+                    queue.add(new Vector(currX, currY - 1));
+                    queue.add(new Vector(currX + 1, currY));
+                    queue.add(new Vector(currX, currY + 1));
+                    queue.add(new Vector(currX - 1, currY));
+                }
+            }
+        }
+        lineWidth = oldLineWidth;
+    }
 
     public void drawObject(ObjectRep object){
         object.draw(this);

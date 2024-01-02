@@ -1,4 +1,5 @@
 import BasicDatatypes.Matrix;
+import BasicDatatypes.Vector;
 import ObjectRep.ObjectRep;
 import ObjectRep.TriangleStrip;
 import Transformation.Transformation3D;
@@ -38,6 +39,7 @@ public class WindowTest {
 //        Cube();
 //        ApplyTransformToCube();
 //        CubeAnimation();
+        FloodFill();
     }
     private static void ShowWindowWithCoordinates(){
         WindowCD w = new WindowCD(400);
@@ -106,5 +108,16 @@ public class WindowTest {
                     Transformation3D.rotateY(0.1f)
                 )}
         );
+    }
+
+    private static void FloodFill(){
+        WindowCD w = new WindowCD(600);
+        w.setLineWidth(2);
+        w.setColor(Color.blue);
+        TriangleStrip cube = TriangleStrip.cube(2);
+        w.clear(false);
+        w.drawObject(cube);
+        w.floodFill(new Vector(0.2f, 0.5f));
+        w.show();
     }
 }
