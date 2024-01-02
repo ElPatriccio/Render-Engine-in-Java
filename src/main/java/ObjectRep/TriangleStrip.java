@@ -4,10 +4,7 @@ import BasicDatatypes.Matrix;
 import BasicDatatypes.Vector;
 import Window.Window;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class TriangleStrip implements ObjectRep{
 
@@ -16,6 +13,10 @@ public class TriangleStrip implements ObjectRep{
     public TriangleStrip(Collection<Vector> vs){
         vertices = new ArrayList<>(vs.size());
         vertices.addAll(vs);
+    }
+
+    public TriangleStrip(Vector ...vs){
+        this(Arrays.asList(vs));
     }
 
     public TriangleStrip(){
@@ -27,8 +28,25 @@ public class TriangleStrip implements ObjectRep{
     }
 
     @Override
+    public Vector get(int index) {
+        return vertices.get(index);
+    }
+
+    @Override
+    public void set(int index, Vector v) {
+        vertices.set(index, v);
+    }
+
+    @Override
     public void applyTransformation(Matrix transform) {
         vertices.replaceAll(transform::mult);
+    }
+
+    @Override
+    public ObjectRep createNewObjectWithTransform(Matrix transform) {
+        TriangleStrip result = (TriangleStrip) deepCopy();
+        result.applyTransformation(transform);
+        return result;
     }
 
     @Override
@@ -43,11 +61,35 @@ public class TriangleStrip implements ObjectRep{
 
     @Override
     public ObjectRep deepCopy() {
-        return null;
+        TriangleStrip copy = new TriangleStrip();
+        for(Vector v : this){
+            copy.addVertex(v);
+        }
+        return copy;
     }
 
     @Override
     public Iterator<Vector> iterator() {
         return vertices.iterator();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TriangleStrip vectors = (TriangleStrip) o;
+        return Objects.equals(vertices, vectors.vertices);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(vertices);
+    }
+
+    @Override
+    public String toString() {
+        return "TriangleStrip{" +
+                "vertices=" + vertices +
+                '}';
     }
 }
