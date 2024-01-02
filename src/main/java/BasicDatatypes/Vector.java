@@ -55,6 +55,12 @@ public class Vector implements Iterable<Float>{
        scalarMult(1f/length());
     }
 
+    public Vector normalized(){
+        Vector result = this.deepCopy();
+        result.normalize();
+        return result;
+    }
+
 
     public void dehomogenize(){
         float scalar = 1f/v[size()-1];
@@ -66,12 +72,25 @@ public class Vector implements Iterable<Float>{
             v[i] = v[i]*scalar;
         }
     }
+
+    public Vector dehomogenized(){
+        Vector result = this.deepCopy();
+        result.dehomogenize();
+        return result;
+    }
+
     //requires dimension() == v.dimension()
     //ensures result of vector addition
     public void add(Vector v){
         for (int i = 0; i < dimension(); i++) {
             set(i, get(i) + v.get(i));
         }
+    }
+
+    public static Vector add(Vector v1, Vector v2){
+        Vector result = v1.deepCopy();
+        result.add(v2);
+        return result;
     }
 
     //requires v != null
@@ -82,11 +101,22 @@ public class Vector implements Iterable<Float>{
         }
     }
 
+    public static Vector scalarMult(Vector v, float scalar){
+        Vector result = v.deepCopy();
+        result.scalarMult(scalar);
+        return result;
+    }
+
     //requires v1.dimension() == v2.dimension()
     //ensures result of vector subtraction
     public void sub(Vector v){
-        v.scalarMult(-1f);
-        add(v);
+        add(scalarMult(v, -1f));
+    }
+
+    public static Vector sub(Vector v1, Vector v2){
+        Vector result = v1.deepCopy();
+        result.sub(v2);
+        return result;
     }
 
     //requires dimension() == v.dimension()
