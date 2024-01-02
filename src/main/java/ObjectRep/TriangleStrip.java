@@ -6,9 +6,7 @@ import Window.WindowCD;
 import Transformation.Transformation3D;
 import Window.WindowJF;
 
-import java.awt.*;
 import java.util.*;
-import java.util.List;
 
 public class TriangleStrip implements ObjectRep{
 
