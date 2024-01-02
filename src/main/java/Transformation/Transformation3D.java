@@ -34,9 +34,9 @@ public class Transformation3D {
     public static Matrix rotateY(float angle){
         float radians = angle * (float) Math.PI/180f;
         Matrix rotate = Matrix.identityMatrix(4);
-        rotate.set(0, 1, (float) Math.cos(radians));
+        rotate.set(0, 0, (float) Math.cos(radians));
         rotate.set(0, 2, (float) Math.sin(radians));
-        rotate.set(2, 1, (float) -Math.sin(radians));
+        rotate.set(2, 0, (float) -Math.sin(radians));
         rotate.set(2, 2, (float) Math.cos(radians));
         return rotate;
     }
