@@ -18,6 +18,13 @@ public class BoundingBox {
         maxy = Math.max(maxy, triangle[2].get(1));
     }
 
+    public BoundingBox(float minx, float maxx, float miny, float maxy){
+        this.minx = minx;
+        this.maxx = maxx;
+        this.miny = miny;
+        this.maxy = maxy;
+    }
+
     public float minX(){
         return minx;
     }
