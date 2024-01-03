@@ -3,6 +3,7 @@ import ObjectRep.TriangleStrip;
 import Transformation.Transformation3D;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -75,5 +76,19 @@ public class TriangleStripTest {
         cube.applyTransformation(Transformation3D.rotateY(60));
 
         assertTrue(cube.surfaceNormal(0).get(2) > 0);
+    }
+
+    @Test
+    void Visibility(){
+        TriangleStrip cube = TriangleStrip.cube(2);
+
+        System.out.println(cube.surfaceNormal(0));
+
+        System.out.println(Arrays.toString(cube.getTriangle(2)));
+
+
+        cube.applyTransformation(Transformation3D.rotateY(-100));
+        System.out.println(cube.surfaceNormal(0));
+
     }
 }
