@@ -127,10 +127,27 @@ public class WindowTest {
         w.setLineWidth(2);
         w.setColor(Color.blue);
         TriangleStrip cube = TriangleStrip.cube(2);
-        w.clear(false);
-        w.drawObject(cube);
-        Vector[] vs = cube.getTriangle(0);
-        w.fillTriangleBaryCentric(vs[0], vs[1], vs[2]);
-        w.show();
+
+        try {
+            while (true){
+                w.clear();
+                Vector[] vs = cube.getTriangle(0);
+                w.fillTriangleBaryCentric(vs[0], vs[1], vs[2]);
+                vs = cube.getTriangle(1);
+                w.drawObject(cube);
+                w.fillTriangleBaryCentric(vs[0], vs[1], vs[2]);
+                w.show();
+                cube.applyTransformation(Transformation3D.combineTransformation(
+                        Transformation3D.rotateY(0.1f)
+                ));
+            }
+        } catch (Exception e) {
+            if(e.getMessage().contains("This CodeDraw")){
+                System.out.println("Window closed!");
+            }
+            else{
+                throw e;
+            }
+        }
     }
 }

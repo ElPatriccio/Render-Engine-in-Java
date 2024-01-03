@@ -212,32 +212,37 @@ public class WindowCD {
 
         float denominator = d00*d11 - d01 * d01;
 
-        float midx = bounds.maxX() - bounds.minX();
-        float midy = bounds.maxY() - bounds.minX();
+        float midX = bounds.maxX() - bounds.minX();
+        float midY = bounds.maxY() - bounds.minX();
 
-        BoundingBox topLeft = new BoundingBox(bounds.minX(), midx, midy, bounds.maxY());
-        BoundingBox bottomLeft = new BoundingBox(bounds.minX(), midx, bounds.minY(), midy);
-        BoundingBox topRight = new BoundingBox(midx, bounds.maxX(), midy, bounds.maxY());
-        BoundingBox bottomRight = new BoundingBox(midx, bounds.maxX(), bounds.minY(), midy);
+        BoundingBox topLeft = new BoundingBox(bounds.minX(), midX, midY, bounds.maxY());
+        BoundingBox bottomLeft = new BoundingBox(bounds.minX(), midX, bounds.minY(), midY);
+        BoundingBox topRight = new BoundingBox(midX, bounds.maxX(), midY, bounds.maxY());
+        BoundingBox bottomRight = new BoundingBox(midX, bounds.maxX(), bounds.minY(), midY);
 
-        Thread t1, t2, t3, t4;
-        t1 = new Thread(() -> threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, topLeft));
-        t2 = new Thread(() -> threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, bottomLeft));
-        t3 = new Thread(() -> threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, topRight));
-        t4 = new Thread(() -> threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, bottomRight));
+//        Thread t1, t2, t3, t4;
+//        t1 = new Thread(() -> threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, topLeft));
+//        t2 = new Thread(() -> threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, bottomLeft));
+//        t3 = new Thread(() -> threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, topRight));
+//        t4 = new Thread(() -> threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, bottomRight));
+//
+//        t1.start();
+//        t2.start();
+//        t3.start();
+//        t4.start();
 
-        t1.start();
+        threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, bounds);
 
 
 
-        try {
-            t1.join();
-            t2.join();
-            t3.join();
-            t4.join();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            t1.join();
+//            t2.join();
+//            t3.join();
+//            t4.join();
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     public void drawObject(ObjectRep object){
