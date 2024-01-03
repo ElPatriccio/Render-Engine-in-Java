@@ -1,5 +1,6 @@
 import BasicDatatypes.Matrix;
 import BasicDatatypes.Vector;
+import Drawing.Tools;
 import ObjectRep.ObjectRep;
 import ObjectRep.TriangleStrip;
 import Transformation.Transformation3D;
@@ -127,15 +128,21 @@ public class WindowTest {
         w.setLineWidth(2);
         w.setColor(Color.blue);
         TriangleStrip cube = TriangleStrip.cube(2);
+        Color[] colors = new Color[]{Color.BLUE, Color.BLUE, Color.RED, Color.RED, Color.GREEN, Color.GREEN};
 
         try {
             while (true){
+                int i = 0;
                 w.clear();
-                Vector[] vs = cube.getTriangle(0);
-                w.fillTriangleBaryCentric(vs[0], vs[1], vs[2]);
-                vs = cube.getTriangle(1);
-                w.drawObject(cube);
-                w.fillTriangleBaryCentric(vs[0], vs[1], vs[2]);
+                for (int j = 0; j < cube.amountTriangles(); j++) {
+                    Vector[] vs = cube.getTriangle(j);
+                    w.setColor(colors[i++]);
+                    i %= colors.length;
+                    if(cube.surfaceNormal(j).get(2) > 0 - 0.001f){
+                        continue;
+                    }
+                    w.fillTriangleBaryCentric(vs[0], vs[1], vs[2]);
+                }
                 w.show();
                 cube.applyTransformation(Transformation3D.combineTransformation(
                         Transformation3D.rotateY(0.1f)
