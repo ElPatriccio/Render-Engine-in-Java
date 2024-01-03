@@ -104,7 +104,7 @@ public class TriangleStrip implements ObjectRep{
 
     public Vector surfaceNormal(int triangle){
         Vector[] vs = getTriangle(triangle);
-        return vs[0].crossProduct(vs[2]);
+        return vs[0].crossProduct(vs[1]);
     }
 
     @Override

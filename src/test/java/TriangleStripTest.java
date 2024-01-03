@@ -60,7 +60,20 @@ public class TriangleStripTest {
         TriangleStrip result = (TriangleStrip) strip.createNewObjectWithTransform(Transformation3D.translate(3, 1, 0));
 
         assertNotEquals(strip, result);
+    }
 
-        System.out.println(result);
+    @Test
+    void SurfaceNormal(){
+        TriangleStrip cube = TriangleStrip.cube(2);
+        cube.applyTransformation(Transformation3D.rotateY(90));
+        assertEquals(0f, cube.surfaceNormal(0).get(2), 0.001f);
+
+        cube.applyTransformation(Transformation3D.rotateY(-45));
+
+        assertTrue(cube.surfaceNormal(0).get(2) < 0);
+
+        cube.applyTransformation(Transformation3D.rotateY(60));
+
+        assertTrue(cube.surfaceNormal(0).get(2) > 0);
     }
 }
