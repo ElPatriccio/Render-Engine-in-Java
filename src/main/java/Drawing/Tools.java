@@ -1,6 +1,7 @@
 package Drawing;
 
 import BasicDatatypes.Vector;
+import ObjectRep.BoundingBox;
 
 public class Tools {
     public static Vector barycentric(Vector a, Vector b, Vector c, Vector p){
@@ -17,6 +18,19 @@ public class Tools {
         float d21 = v2.dot(v1);
 
         float denominator = d00*d11 -d01 *d01;
+        v = (d11 * d20 - d01 * d21) /denominator;
+        w = (d00 * d21 -d01 *d20) / denominator;
+        return new Vector(1f - v - w, v, w);
+    }
+
+    public static Vector barycentric(Vector a, Vector v0, Vector v1, Vector p, float d00, float d01, float d11, float denominator){
+        float v, w;
+
+        Vector v2 = Vector.sub(p, a);
+
+        float d20 = v2.dot(v0);
+        float d21 = v2.dot(v1);
+
         v = (d11 * d20 - d01 * d21) /denominator;
         w = (d00 * d21 -d01 *d20) / denominator;
         return new Vector(1f - v - w, v, w);

@@ -186,6 +186,23 @@ public class WindowCD {
         lineWidth = oldLineWidth;
     }
 
+    public void fillTriangleBaryCentric(Vector a, Vector b, Vector c){
+        BoundingBox bounds = new BoundingBox(new Vector[]{a, b, c});
+        Vector v0 = Vector.sub(b, a);
+        Vector v1 = Vector.sub(c, a);
+
+        float d00 = v0.dot(v0);
+        float d01 = v0.dot(v1);
+        float d11 = v1.dot(v1);
+
+        float denominator = d00*d11 - d01 * d01;
+
+        float midx = bounds.maxX() - bounds.minX();
+        float midy = bounds.maxY() - bounds.minX();
+
+        BoundingBox topLeft = new BoundingBox(bounds.minX(), midx, bounds.maxY(), midy);
+    }
+
     public void drawObject(ObjectRep object){
         object.draw(this);
     }
