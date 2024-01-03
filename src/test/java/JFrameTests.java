@@ -1,6 +1,6 @@
 import ObjectRep.TriangleStrip;
 import Transformation.Transformation3D;
-import Window.WindowJF;
+import Drawing.WindowJF;
 public class JFrameTests {
     public static void main(String[] args) {
         WindowJF w = new WindowJF(1920, 1080);

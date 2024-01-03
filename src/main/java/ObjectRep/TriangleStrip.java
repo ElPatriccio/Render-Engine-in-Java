@@ -2,9 +2,9 @@ package ObjectRep;
 
 import BasicDatatypes.Matrix;
 import BasicDatatypes.Vector;
-import Window.WindowCD;
+import Drawing.WindowCD;
 import Transformation.Transformation3D;
-import Window.WindowJF;
+import Drawing.WindowJF;
 
 import java.util.*;
 

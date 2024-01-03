@@ -1,4 +1,4 @@
-package Window;
+package Drawing;
 
 import BasicDatatypes.Vector;
 import ObjectRep.*;

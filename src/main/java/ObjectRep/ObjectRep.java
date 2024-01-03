@@ -3,8 +3,8 @@ package ObjectRep;
 import BasicDatatypes.Matrix;
 import BasicDatatypes.Vector;
 
-import Window.WindowCD;
-import Window.WindowJF;
+import Drawing.WindowCD;
+import Drawing.WindowJF;
 
 
 public interface ObjectRep extends Iterable<Vector> {

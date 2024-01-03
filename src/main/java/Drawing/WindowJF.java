@@ -1,11 +1,9 @@
-package Window;
+package Drawing;
 import BasicDatatypes.Vector;
 import ObjectRep.ObjectRep;
 import ObjectRep.TriangleStrip;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 public class WindowJF {
