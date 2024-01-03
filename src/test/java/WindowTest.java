@@ -40,6 +40,7 @@ public class WindowTest {
 //        ApplyTransformToCube();
 //        CubeAnimation();
         FloodFill();
+        BarycentricFill();
     }
     private static void ShowWindowWithCoordinates(){
         WindowCD w = new WindowCD(400);
@@ -118,6 +119,18 @@ public class WindowTest {
         w.clear(false);
         w.drawObject(cube);
         w.floodFill(new Vector(0.2f, 0.5f));
+        w.show();
+    }
+
+    private static void BarycentricFill(){
+        WindowCD w = new WindowCD(600);
+        w.setLineWidth(2);
+        w.setColor(Color.blue);
+        TriangleStrip cube = TriangleStrip.cube(2);
+        w.clear(false);
+        w.drawObject(cube);
+        Vector[] vs = cube.getTriangle(0);
+        w.fillTriangleBaryCentric(vs[0], vs[1], vs[2]);
         w.show();
     }
 }

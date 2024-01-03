@@ -35,4 +35,18 @@ public class Tools {
         w = (d00 * d21 -d01 *d20) / denominator;
         return new Vector(1f - v - w, v, w);
     }
+
+    public static boolean insideTriangle(Vector barycentric){
+        float sum = 0;
+        for (float f : barycentric) {
+            sum += f;
+            if (f < 0){
+                return false;
+            }
+        }
+
+        float delta = 0.000001f;
+
+        return sum > 1f - delta && sum < 1f + delta;
+    }
 }
