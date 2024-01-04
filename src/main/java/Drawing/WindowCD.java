@@ -98,7 +98,7 @@ public class WindowCD implements Window{
         int dY = (yEnd - yStart);
 
         int xInc = sgn(dX);
-        int yInc = sgn(dY);//* lineWidth;
+        int yInc = sgn(dY);
 
         if(dX < 0){
             dX = -dX;
