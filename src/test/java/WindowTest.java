@@ -1,6 +1,5 @@
 import BasicDatatypes.Matrix;
 import BasicDatatypes.Vector;
-import Drawing.Tools;
 import ObjectRep.ObjectRep;
 import ObjectRep.TriangleStrip;
 import Transformation.Transformation3D;

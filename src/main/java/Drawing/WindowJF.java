@@ -1,6 +1,5 @@
 package Drawing;
 import BasicDatatypes.Vector;
-import ObjectRep.ObjectRep;
 import ObjectRep.TriangleStrip;
 
 import java.awt.*;

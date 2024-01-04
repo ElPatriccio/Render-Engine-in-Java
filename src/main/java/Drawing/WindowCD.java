@@ -212,8 +212,8 @@ public class WindowCD implements Window{
 
         float denominator = d00*d11 - d01 * d01;
 
-        float midX = bounds.maxX() - bounds.minX();
-        float midY = bounds.maxY() - bounds.minX();
+//        float midX = bounds.maxX() - bounds.minX();
+//        float midY = bounds.maxY() - bounds.minX();
 
 //        BoundingBox topLeft = new BoundingBox(bounds.minX(), midX, midY, bounds.maxY());
 //        BoundingBox bottomLeft = new BoundingBox(bounds.minX(), midX, bounds.minY(), midY);

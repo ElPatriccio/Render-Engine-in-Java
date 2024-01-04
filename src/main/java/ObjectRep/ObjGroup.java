@@ -3,8 +3,6 @@ package ObjectRep;
 import BasicDatatypes.Matrix;
 import BasicDatatypes.Vector;
 import Drawing.Window;
-import Drawing.WindowCD;
-import Drawing.WindowJF;
 
 import java.util.*;
 

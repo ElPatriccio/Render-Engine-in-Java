@@ -3,7 +3,6 @@ import ObjectRep.TriangleStrip;
 import Transformation.Transformation3D;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
