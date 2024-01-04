@@ -185,18 +185,6 @@ public class WindowCD implements Window{
         }
         lineWidth = oldLineWidth;
     }
-
-    private void threadHelper(Vector aWindow, Vector v0, Vector v1, float d00, float d01, float d11, float denominator, BoundingBox b){
-        for (int i = (int) b.minX(); i < b.maxX(); i++) {
-            for (int j = (int)b.minY(); j < b.maxY(); j++) {
-                if(Tools.insideTriangle(Tools.barycentric(
-                        aWindow, v0, v1, new Vector(i, j), d00, d01, d11, denominator)
-                )){
-                    window.setPixel(i, j, color);
-                }
-            }
-        }
-    }
     public void fillTriangleBaryCentric(Vector a, Vector b, Vector c){
         Vector aWindow = new Vector(convX(a.get(0)), convY(a.get(1)));
         Vector bWindow = new Vector(convX(b.get(0)), convY(b.get(1)));
@@ -212,37 +200,16 @@ public class WindowCD implements Window{
 
         float denominator = d00*d11 - d01 * d01;
 
-//        float midX = bounds.maxX() - bounds.minX();
-//        float midY = bounds.maxY() - bounds.minX();
+        for (int i = (int) bounds.minX(); i < bounds.maxX(); i++) {
+            for (int j = (int)bounds.minY(); j < bounds.maxY(); j++) {
+                if(Tools.insideTriangle(Tools.barycentric(
+                        aWindow, v0, v1, new Vector(i, j), d00, d01, d11, denominator)
+                )){
+                    window.setPixel(i, j, color);
+                }
+            }
+        }
 
-//        BoundingBox topLeft = new BoundingBox(bounds.minX(), midX, midY, bounds.maxY());
-//        BoundingBox bottomLeft = new BoundingBox(bounds.minX(), midX, bounds.minY(), midY);
-//        BoundingBox topRight = new BoundingBox(midX, bounds.maxX(), midY, bounds.maxY());
-//        BoundingBox bottomRight = new BoundingBox(midX, bounds.maxX(), bounds.minY(), midY);
-
-//        Thread t1, t2, t3, t4;
-//        t1 = new Thread(() -> threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, topLeft));
-//        t2 = new Thread(() -> threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, bottomLeft));
-//        t3 = new Thread(() -> threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, topRight));
-//        t4 = new Thread(() -> threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, bottomRight));
-//
-//        t1.start();
-//        t2.start();
-//        t3.start();
-//        t4.start();
-
-        threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, bounds);
-
-
-
-//        try {
-//            t1.join();
-//            t2.join();
-//            t3.join();
-//            t4.join();
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
     }
 
     public void drawTriangleStrip(TriangleStrip strip, boolean wireframe){
