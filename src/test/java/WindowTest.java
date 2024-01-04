@@ -22,7 +22,7 @@ public class WindowTest {
 
         }catch (RuntimeException e){
             if(e.getMessage().contains("This CodeDraw")){
-                System.out.println("WindowCD closed!");
+                System.out.println("Window closed!");
             }else{
                 throw e;
             }
@@ -31,14 +31,14 @@ public class WindowTest {
     }
 
     public static void main(String[] args) {
-//        ShowWindowWithCoordinates();
-//        DrawPixel();
-//        DrawLine();
-//        Color();
-//        Square();
-//        Cube();
-//        ApplyTransformToCube();
-//        CubeAnimation();
+        ShowWindowWithCoordinates();
+        DrawPixel();
+        DrawLine();
+        Color();
+        Square();
+        Cube();
+        ApplyTransformToCube();
+        CubeAnimation();
         FloodFill();
         BarycentricFill();
     }
@@ -128,9 +128,11 @@ public class WindowTest {
         w.setColor(Color.blue);
         TriangleStrip cube = TriangleStrip.cube(2);
         Color[] colors = new Color[]{Color.ORANGE, Color.ORANGE, Color.YELLOW, Color.RED, Color.RED, Color.WHITE, Color.WHITE, Color.GREEN, Color.GREEN, Color.YELLOW, Color.BLUE, Color.BLUE};
-
+        float framesPerMillisecond = 60f/1000f;
         try {
+
             while (true){
+                long time = System.currentTimeMillis();
                 int i = 0;
                 w.clear();
                 for (int j = 0; j < cube.amountTriangles(); j++) {
@@ -143,12 +145,13 @@ public class WindowTest {
                     w.fillTriangleBaryCentric(vs[0], vs[1], vs[2]);
                 }
                 w.setColor(Color.black);
-                w.drawObject(cube);
+                w.drawObject(cube, false);
                 w.show();
+                time = System.currentTimeMillis() - time;
                 cube.applyTransformation(Transformation3D.combineTransformation(
-                        Transformation3D.rotateY(0.3f),
-                        Transformation3D.rotateX(0.03f),
-                        Transformation3D.rotateZ(0.15f)
+                        Transformation3D.rotateY(0.9f * time * framesPerMillisecond),
+                        Transformation3D.rotateX(0.09f * time * framesPerMillisecond),
+                        Transformation3D.rotateZ(0.45f * time * framesPerMillisecond)
                 ));
             }
         } catch (Exception e) {
