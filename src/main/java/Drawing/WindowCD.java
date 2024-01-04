@@ -254,14 +254,12 @@ public class WindowCD {
             return;
         }
         Vector v1, v2, v3;
-        v1 = strip.get(0);
-        v2 = strip.get(1);
-        v3 = strip.get(2);
-        drawLine(v1, v2);
-        drawLine(v2, v3);
-        drawLine(v3, v1);
-
-        for (int i = 1; i < strip.amountTriangles(); i++) {
+        boolean prevDrawn = false;
+        for (int i = 0; i < strip.amountTriangles(); i++) {
+            if(!(strip.surfaceNormal(i).get(2) < 0 + 0.0001f)){
+                prevDrawn = false;
+                continue;
+            }
             if(i % 2 == 0){
                 v1 = strip.get(i);
                 v2 = strip.get(i+1);
@@ -273,6 +271,10 @@ public class WindowCD {
             v3 = strip.get(i+2);
             drawLine(v1, v3);
             drawLine(v2, v3);
+            if(!prevDrawn){
+                drawLine(v1, v2);
+                prevDrawn = true;
+            }
         }
     }
     public void clear(boolean showCs){

@@ -128,7 +128,7 @@ public class WindowTest {
         w.setLineWidth(2);
         w.setColor(Color.blue);
         TriangleStrip cube = TriangleStrip.cube(2);
-        Color[] colors = new Color[]{Color.BLUE, Color.BLUE, Color.RED, Color.RED, Color.GREEN, Color.GREEN};
+        Color[] colors = new Color[]{Color.ORANGE, Color.ORANGE, Color.YELLOW, Color.RED, Color.RED, Color.WHITE, Color.WHITE, Color.GREEN, Color.GREEN, Color.YELLOW, Color.BLUE, Color.BLUE};
 
         try {
             while (true){
@@ -143,9 +143,13 @@ public class WindowTest {
                     }
                     w.fillTriangleBaryCentric(vs[0], vs[1], vs[2]);
                 }
+                w.setColor(Color.black);
+                w.drawObject(cube);
                 w.show();
                 cube.applyTransformation(Transformation3D.combineTransformation(
-                        Transformation3D.rotateY(0.1f)
+                        Transformation3D.rotateY(0.3f),
+                        Transformation3D.rotateX(0.03f),
+                        Transformation3D.rotateZ(0.15f)
                 ));
             }
         } catch (Exception e) {
