@@ -2,11 +2,11 @@ package Drawing;
 
 import BasicDatatypes.Vector;
 import ObjectRep.*;
-import codedraw.CodeDraw;
 
 import java.awt.Color;
 import java.util.LinkedList;
 import java.util.Queue;
+import codedraw.CodeDraw;
 
 public class WindowCD implements Window{
     private final CodeDraw window;
