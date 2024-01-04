@@ -82,13 +82,30 @@ public class TriangleStripTest {
     void Visibility(){
         TriangleStrip cube = TriangleStrip.cube(2);
 
-        System.out.println(cube.surfaceNormal(0));
+        for (int i = 0; i < cube.amountTriangles(); i++) {
+            Vector[] vs = cube.getTriangle(i);
+            float z = vs[0].crossProduct(vs[1]).get(2);
+            if(i == 0 || i == 1){
+                assertTrue(z < 0 + 0.00001f);
+            }
+            else{
+                assertTrue(z >= 0 - 0.00001f);
+            }
+        }
 
-        System.out.println(Arrays.toString(cube.getTriangle(2)));
+        cube.applyTransformation(Transformation3D.rotateY(45));
 
 
-        cube.applyTransformation(Transformation3D.rotateY(-100));
-        System.out.println(cube.surfaceNormal(0));
+        for (int i = 0; i < cube.amountTriangles(); i++) {
+            float z = cube.surfaceNormal(i).get(2);
+            if(i == 0 || i == 1 || i == 7 || i == 8){
+
+                assertTrue(z < 0 + 0.00001f);
+            }
+            else{
+                assertTrue(z >= 0 - 0.00001f);
+            }
+        }
 
     }
 }
