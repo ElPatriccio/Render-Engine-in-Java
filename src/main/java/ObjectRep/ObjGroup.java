@@ -2,6 +2,7 @@ package ObjectRep;
 
 import BasicDatatypes.Matrix;
 import BasicDatatypes.Vector;
+import Drawing.Window;
 import Drawing.WindowCD;
 import Drawing.WindowJF;
 
@@ -70,13 +71,8 @@ public class ObjGroup implements ObjectRep{
     }
 
     @Override
-    public void draw(WindowCD w) {
-        obs.forEach(a -> a.draw(w));
-    }
-
-    @Override
-    public void draw(WindowJF w) {
-        obs.forEach(a -> a.draw(w));
+    public void draw(Window w, boolean wireframe) {
+        obs.forEach(a -> a.draw(w, wireframe));
     }
 
     @Override

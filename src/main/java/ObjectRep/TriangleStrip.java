@@ -2,6 +2,7 @@ package ObjectRep;
 
 import BasicDatatypes.Matrix;
 import BasicDatatypes.Vector;
+import Drawing.Window;
 import Drawing.WindowCD;
 import Transformation.Transformation3D;
 import Drawing.WindowJF;
@@ -139,13 +140,8 @@ public class TriangleStrip implements ObjectRep{
     }
 
     @Override
-    public void draw(WindowCD w) {
-        w.drawTriangleStrip(this);
-    }
-
-    @Override
-    public void draw(WindowJF w){
-        w.drawTriangleStrip(this);
+    public void draw(Window w, boolean wireframe){
+        w.drawTriangleStrip(this, wireframe);
     }
 
     @Override

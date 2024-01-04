@@ -8,7 +8,7 @@ import java.awt.Color;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class WindowCD {
+public class WindowCD implements Window{
     private final CodeDraw window;
     private Color color = Color.BLACK;
     private int lineWidth = 1;
@@ -215,10 +215,10 @@ public class WindowCD {
         float midX = bounds.maxX() - bounds.minX();
         float midY = bounds.maxY() - bounds.minX();
 
-        BoundingBox topLeft = new BoundingBox(bounds.minX(), midX, midY, bounds.maxY());
-        BoundingBox bottomLeft = new BoundingBox(bounds.minX(), midX, bounds.minY(), midY);
-        BoundingBox topRight = new BoundingBox(midX, bounds.maxX(), midY, bounds.maxY());
-        BoundingBox bottomRight = new BoundingBox(midX, bounds.maxX(), bounds.minY(), midY);
+//        BoundingBox topLeft = new BoundingBox(bounds.minX(), midX, midY, bounds.maxY());
+//        BoundingBox bottomLeft = new BoundingBox(bounds.minX(), midX, bounds.minY(), midY);
+//        BoundingBox topRight = new BoundingBox(midX, bounds.maxX(), midY, bounds.maxY());
+//        BoundingBox bottomRight = new BoundingBox(midX, bounds.maxX(), bounds.minY(), midY);
 
 //        Thread t1, t2, t3, t4;
 //        t1 = new Thread(() -> threadHelper(aWindow, v0, v1, d00, d01, d11, denominator, topLeft));
@@ -245,18 +245,14 @@ public class WindowCD {
 //        }
     }
 
-    public void drawObject(ObjectRep object){
-        object.draw(this);
-    }
-
-    public void drawTriangleStrip(TriangleStrip strip){
+    public void drawTriangleStrip(TriangleStrip strip, boolean wireframe){
         if(strip.amountTriangles() == 0){
             return;
         }
         Vector v1, v2, v3;
         boolean prevDrawn = false;
         for (int i = 0; i < strip.amountTriangles(); i++) {
-            if(!(strip.surfaceNormal(i).get(2) < 0 + 0.0001f)){
+            if(!wireframe && !(strip.surfaceNormal(i).get(2) < 0 + 0.0001f)){
                 prevDrawn = false;
                 continue;
             }

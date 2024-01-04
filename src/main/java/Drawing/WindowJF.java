@@ -6,7 +6,7 @@ import ObjectRep.TriangleStrip;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
-public class WindowJF {
+public class WindowJF implements Window{
     private BufferedImage image;
     private JFrame frame;
 
@@ -109,12 +109,53 @@ public class WindowJF {
         g.dispose();
     }
 
-    public void drawObject(ObjectRep obj){
-        obj.draw(this);
+    @Override
+    public void setColor(Color color) {
+
+    }
+
+    @Override
+    public void setLineWidth(int width) {
+
+    }
+
+    @Override
+    public void drawPoint(float x, float y) {
+
+    }
+
+    @Override
+    public void drawLine(float xStart, float yStart, float xEnd, float yEnd) {
+
+    }
+
+    @Override
+    public void drawLine(Vector start, Vector end) {
+
+    }
+
+    @Override
+    public void drawTriangleStrip(TriangleStrip strip, boolean wireframe) {
+
+    }
+
+    @Override
+    public void clear() {
+
     }
 
     public void show(){
         frame.repaint(1000000000);
+    }
+
+    @Override
+    public int width() {
+        return 0;
+    }
+
+    @Override
+    public int height() {
+        return 0;
     }
 
     private void createCube(){
