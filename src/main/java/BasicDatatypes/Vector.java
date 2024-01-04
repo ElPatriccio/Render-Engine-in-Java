@@ -189,6 +189,7 @@ public class Vector implements Iterable<Float>{
         return new VecIter(v, true);
     }
 
+    //ensures returns new 1 x dimension() Matrix (without homogenous component)
     public Matrix toMatrixDeep(){
         Matrix result = new Matrix(1, dimension());
         for (int i = 0; i < dimension(); i++) {
@@ -197,8 +198,9 @@ public class Vector implements Iterable<Float>{
         return result;
     }
 
+    //ensures returns 1 x size() Matrix (with homogenous component) using the same array (mutability!!)
     public Matrix toMatrix(){
-        return new Matrix(1, dimension(), v);
+        return new Matrix(1, size(), v);
     }
 
 
